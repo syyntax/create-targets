@@ -1,0 +1,63 @@
+.\" Manpage for create-targets
+.\" Contact syyntax@protonmail.com for feedback, suggestions, or more information about this application.
+.TH man 8 '27 Jan 2019" "1.0" "create-targets man page"
+.SH NAME
+create-targets \- Generate a list of target IP addresses
+.SH SYNOPSIS
+create-targets [OPTIONS]
+.SH DESCRIPTION
+create-targets is a python script used to create a list of target IP addresses.  This list can be used to configure firewalls and to determine which hosts will be the targets of cybersecurity passive and active activity.
+.SH OPTIONS
+create-targets uses a variety of options.
+  \-h, \--help            			show this help message and exit
+  \-r, \--random          			Randomize the target list.
+  \-n RANGE, \--net RANGE			Network range to generate (e.g. 192.168.1.0/24)
+  \--ipv6                			Use IPv6 addressing (default is IPv4).
+  \-x LIST, \--exclude LIST		Exclude a comma-delimited list of IP addresses
+  							(e.g.192.168.1.1,192.168.1.2,...). Do not use spaces.
+  \-xl FILE, \--exclude-list FILE	Exclude a file containing newline-delimited IP addresses.
+  \-o FILE, \--out FILE   			Output results to a file.
+  
+\-h, \--help
+  This option will list the options that can be used with create-targets.
+
+\-r, \--random
+  This option will take the provided IP subnet and shuffle the list randomly so that the IPs are not displayed in a logical order.
+
+\-n RANGE, \--net RANGE
+  Given a network range using CIDR notation, this option will list all valid IP addresses within a given subnet.
+
+\--ipv6
+  Use this option if you intend to provide an IPv6 subnet and list all of its valid IPv6 addresses.
+
+\-x, \--exclude
+  Use this option to exclude a list of IPs from the generated target list. This list should be comma-delimited without spaces. (e.g. 10.10.0.1,10.10.0.2,10.10.0.10,...).
+
+\-xl, \--exclude-list
+  Use this option to exclude a list of IPs in a file.  The file should list the IPs with each IP on its own separate line (not comma-delimited).
+
+\-o, \--out
+  By default, create-targets will create a targets.list file in the working directory. Using this option, you can designate the file and file path that the results will be saved to (e.g. -o /tmp/targets.txt). You must indicate the filename. Providing only the directory will result in an error.
+
+.SH EXAMPLES
+Create a target list:
+  create-targets -n 192.168.1.0/24
+
+Create a randomized target list:
+  create-targets -n 192.168.1.0/24 -r
+  
+Create an IPv6 target list
+  create-targets -n ::0/120 --ipv6
+
+Exclude a comma-delimited list from a target list:
+  create-targets -n 192.168.1.0/24 -x 192.168.1.1,192.168.1.254,192.168.1.2
+
+Exclude a list of IP addresses contained in a file:
+  create-targets -n 192.168.1.0/24 -xl /home/user/Documents/excludes.txt
+
+Output the results of a target list to a file:
+  create-targets -n 192.168.1.0/24 -o /tmp/targets.txt
+.SH BUGS
+When using this script for an IPv6 subnet, the application may crash given the high volume of IP addresses listed for large subnets.
+.SH AUTHOR
+Jason Scott (syyntax@protonmail.com)
