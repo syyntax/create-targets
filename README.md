@@ -7,7 +7,7 @@ This application is intended for use on Linux systems and is compatible with Pyt
 ## Download
 Open a terminal shell and use git clone to download.
 ```bash
-git clone https://github.com/syyntax/create-targets
+git clone https://github.com/syyntax/create-targets.git
 ```
 ## Installation
 Run the **setup.py** script to move **create-targets.py** to the */usr/local/bin* directory and to install the man page.
