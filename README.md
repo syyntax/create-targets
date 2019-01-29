@@ -10,7 +10,7 @@ Open a terminal shell and use git clone to download.
 git clone https://github.com/syyntax/create-targets.git
 ```
 ## Installation
-Run the **setup.py** script in the *bin/* folder to move **create-targets.py** to the */usr/local/bin* directory and to install the man page.
+Run the **setup.py** script in the *bin* folder to move **create-targets.py** to the */usr/bin* directory and to install the man page.
 ```bash
 sudo python setup.py
 ```
