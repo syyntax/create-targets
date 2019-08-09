@@ -51,12 +51,15 @@ def col(color, text):
 
 
 def span_ip(ip_range, random):
-
+    '''
     if args.ipv6 is False:
         network = addr.IPv4Network(u'{}'.format(ip_range))
 
     else:
         network = addr.IPv6Network(u'{}'.format(ip_range))
+    '''
+    
+    network = addr.ip_network(args.net, False)
 
     network_list_temp = list(network.hosts())
     network_list = [str(network_list_temp[i]) for i in range(len(network_list_temp))]
