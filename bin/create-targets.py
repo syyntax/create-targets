@@ -5,8 +5,8 @@ Title:          create-targets
 Description:    Create target list
 Author:         Jason G. Scott (@syynt4x)
 Email:          syyntax@protonmail.com
-Date:           24 Jan 2019
-Version:        2019.01.24
+Date:           08 Aug 2019
+Version:        1.2.0
 """
 
 import argparse, os, re, ipaddress as addr, random as r
